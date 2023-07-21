@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Loader</title>
+
+		<style>
+			*,
+			::before,
+			::after {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+			.container {
+				width: 100%;
+				height: 100vh;
+				background: #232323;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			@keyframes light {
+				to {
+					stroke-dashoffset: 244.35121154785156px;
+				}
+			}
+
+			svg {
+				position: absolute;
+				top: 40%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+			.move {
+				stroke-dasharray: 40px;
+				z-index: 2;
+				animation: light 2s ease-out infinite;
+			}
+			.body {
+				stroke-dasharray: 10000px;
+			}
+
+			.annecdote-container {
+				color: white;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+		</style>
+	</head>
+	<body>
+		<section class="container">
+			<div class="loader">
+				<svg
+					width="84"
+					height="72"
+					viewBox="0 0 84 72"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					class="move"
+				>
+					<path
+						d="M42.866 2.5L80.9711 68.5C81.356 69.1667 80.8749 70 80.1051 70H3.89488C3.12508 70 2.64396 69.1667 3.02886 68.5L41.134 2.5C41.5189 1.83333 42.4811 1.83333 42.866 2.5Z"
+						stroke="#edc24b"
+						stroke-width="4"
+					/>
+				</svg>
+
+				<svg
+					width="84"
+					height="72"
+					viewBox="0 0 84 72"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					class="body"
+				>
+					<path
+						d="M42.866 2.5L80.9711 68.5C81.356 69.1667 80.8749 70 80.1051 70H3.89488C3.12508 70 2.64396 69.1667 3.02886 68.5L41.134 2.5C41.5189 1.83333 42.4811 1.83333 42.866 2.5Z"
+						stroke="#000000"
+						stroke-width="6"
+					/>
+				</svg>
+			</div>
+
+			<div class="annecdote-container">
+				<p class="annecdote"></p>
+			</div>
+		</section>
+
+		<script>
+			const foodAnecdote = [
+				"Chaque année, nous consommons en moyenne 500 grammes d’insectes sans le savoir à travers des additifs à base d’insectes contenus dans les produits industriels (yaourt, chips, tarama, charcuterie…)",
+				" De même, nous consommons du bois à travers les produits industriels. La cellulose extraite du bois permet d’apporter un aspect plus crémeux et est ajoutée aux yaourts, par exemple.",
+				"Les biscuits Petit Lu ont une particularité : chaque biscuit possède 24 trous représentant 24h de la journée, 52 dents pour les 52 semaines de l’année et les 4 coins sont les 4 saisons.",
+				" Le surimi est un mélange de chutes de poisson reconstituées auxquelles on a ajouté du colorant orange. Le mot « surimi » signifie d’ailleurs « poisson haché » en japonais.",
+				" Les nuggets de poulet ne sont composées qu’à moitié de viande de poulet… l’autre moitié étant les nerfs, les os, les veines ou encore le cartilage broyé.",
+				" Le miel peut se conserver pendant des milliers d’années, à échelle humaine il ne se périme pas.",
+				"En mangeant avec la pointe d’un couteau, votre plat vous paraîtra plus salé que si vous le mangez avec une fourchette.",
+				"A l’origine, le Nutella s’appelait Tartinoise. C’est seulement en 1964 que la fameuse pâte à tartiner est rebaptisée Nutella.",
+				"Les M&M’s actuels sont bleus, rouges, jaunes, verts, orange et marron. Mais cela n’a pas toujours été le cas. Le M&M’s bleu n’a pas toujours existé. Il a remplacé le beige, qui lui même a remplacé le violet.",
+				"En 1800, le Ketchup était un médicament prescrit en cas de diarrhées.",
+				"A sa création, le Coca-Cola était vendu en pharmacie comme médicament universel, guérissant de nombreux maux.",
+				"Le Mexique est le pays qui consomme le plus de Coca-Cola avec 105,9 litres par an et par habitants.",
+				"En France, nous consommons en moyenne 26,3 kilos de fromage par an et par habitant.",
+				"Le gruyère français peut porter son nom grâce à la taille de ses trous. Ils doivent être de la grosseur d’un pois à celle d’une cerise.",
+				"Aux Etats-Unis, certains aliments que nous consommons tous les jours sont interdits : le foie gras, le lait et même les Kinder Surprise.",
+				"Le plus gros mangeur de hot dog du monde a été capable d’en avaler 69 en 10 minutes.",
+				"Trinidad Moruga Scorpion, c’est le nom du piment le plus fort du monde.",
+				"Au cours d’une vie, nous passons près de 6 ans à manger.",
+				"Le restaurant Chez Masa est le plus cher du monde, il se trouve à Manhattan. Il s’agit d’un restaurant de sushi. Le menu est à 400$, il est composé de 25 plats mais ne comprend pas les taxes ni le pourboire.",
+				"Le restaurant At.Mosphere à Dubai est le restaurant le plus haut du monde. Il se situe dans la tour Burj Khalifa, la tour la plus haute du monde, au 122ème étage, soit à 422 mètres d’altitude.",
+			];
+
+			const annecdote = document.querySelector(".annecdote");
+
+			let i = Math.floor(Math.random() * 20);
+			annecdote.innerHTML = foodAnecdote[i];
+			setInterval(() => {
+				i = (i + 1) % foodAnecdote.length;
+				annecdote.innerHTML = foodAnecdote[i];
+			}, 10000);
+		</script>
+	</body>
+</html>
